@@ -1,4 +1,4 @@
-class Electronics:
+'''class Electronics:
     def __init__(self, name, price):
         self.name = name
         self.price = price
@@ -48,4 +48,46 @@ class Grocery:
         tax = self.price * tax_rate
         print(f"Tax for {self.name} (Grocery): {tax}")
         return tax
+'''
 
+
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    
+    def apply_discount(self):
+        discount = self.discount_rate
+        discounted_price = self.price - (self.price * discount)
+        print(f"Discounted price for {self.name} ({self.__class__.__name__}): {discounted_price}")
+        return discounted_price
+    
+    def calculate_tax(self):
+        tax_rate = self.tax_rate
+        tax = self.price * tax_rate
+        print(f"Tax for {self.name} ({self.__class__.__name__}): {tax}")
+        return tax
+    
+class Electronics(Product):
+    discount_rate = 0.10
+    tax_rate = 0.15
+
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+class Clothing(Product):
+    discount_rate = 0.20
+    tax_rate = 0.08
+
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+class Grocery(Product):
+    discount_rate = 0.05
+    tax_rate = 0.02
+
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+
+        
